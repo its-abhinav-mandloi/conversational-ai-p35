@@ -1,0 +1,5 @@
+# Microsoft Stream Video Demonstration Link
+# Replace the placeholder below after recording and uploading the 12-20 minute
+# group demonstration to Microsoft Stream (with faculty viewing permissions verified).
+
+STREAM_URL=https://web.microsoftstream.com/video/<REPLACE-WITH-ACTUAL-GROUP-92-STREAM-URL>
