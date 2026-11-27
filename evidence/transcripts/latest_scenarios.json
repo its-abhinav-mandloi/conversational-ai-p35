@@ -1,0 +1,911 @@
+{
+  "generated_at_utc": "2026-11-27T08:02:47.143068+00:00",
+  "health": {
+    "status": "ok",
+    "project": "P35 - Agricultural Knowledge Navigator",
+    "llm_mode": "local-only",
+    "embedding_backend": "sentence-transformers",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "indexed_chunks": 24,
+    "sqlite_ok": true,
+    "chroma_ok": true,
+    "supported_crops": [
+      "wheat",
+      "rice",
+      "tomato",
+      "maize",
+      "potato"
+    ]
+  },
+  "scenarios": [
+    {
+      "scenario_id": "SC-01",
+      "title": "Multi-turn crop-type clarification and follow-up continuity",
+      "session_id": "sess-b2edd0a665ce",
+      "turns": [
+        {
+          "user": "Why are lower leaves turning yellow?",
+          "response": {
+            "status_code": 200,
+            "body": {
+              "session_id": "sess-b2edd0a665ce",
+              "turn_number": 1,
+              "intent": "crop_care_query",
+              "action": "CLARIFY_CROP",
+              "active_crop_type": null,
+              "clarification_needed": true,
+              "answer": "To retrieve accurate crop-care educational guidance, could you please clarify **which crop type** you are asking about?\n\nCurrently supported crops in the educational corpus: **wheat, rice, tomato, maize, potato** (or ask a general soil/irrigation/IPM question).",
+              "educational_disclaimer": "Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "citations": [],
+              "confidence": 0.85,
+              "refused": false,
+              "refusal_reason": null,
+              "warnings": [],
+              "trace": {
+                "trace_id": "tr-42a7417f253c",
+                "session_id": "sess-b2edd0a665ce",
+                "turn_number": 1,
+                "normalized_input": "Why are lower leaves turning yellow?",
+                "intent": "crop_care_query",
+                "selected_action": "CLARIFY_CROP",
+                "active_crop_before": null,
+                "active_crop_after": null,
+                "clarification_pending_before": false,
+                "clarification_pending_after": true,
+                "memory_reads": {
+                  "active_crop_type": null,
+                  "pending_clarification": false,
+                  "pending_query": null,
+                  "history_messages_loaded": 0
+                },
+                "memory_writes": {
+                  "active_crop_type": null,
+                  "pending_clarification": true,
+                  "pending_query": "Why are lower leaves turning yellow?"
+                },
+                "retrieval_query": null,
+                "retrieval_crop_filter": null,
+                "retrieval_candidates": [],
+                "chosen_sources": [],
+                "citation_validation_passed": true,
+                "validation_result": "clarification_requested",
+                "llm_mode_requested": "local-only",
+                "llm_mode_used": "local-only",
+                "latency_ms": 0.72,
+                "error_class": null,
+                "timestamp": "2026-11-27T08:02:47.156779+00:00"
+              }
+            }
+          }
+        },
+        {
+          "user": "wheat",
+          "response": {
+            "status_code": 200,
+            "body": {
+              "session_id": "sess-b2edd0a665ce",
+              "turn_number": 2,
+              "intent": "crop_clarification_reply",
+              "action": "RETRIEVE_AND_ANSWER",
+              "active_crop_type": "wheat",
+              "clarification_needed": false,
+              "answer": "Based on the permitted educational documents for **wheat**:\n\n- **[DOC-WHEAT-01#sec-2] Section 2: Recognizing Leaf Yellowing and Nutrient Indicators:** Lower-leaf yellowing (chlorosis) starting from leaf tips on older wheat foliage is commonly associated in extension literature with nitrogen limitation or temporary waterlogging stress. In contrast, interveinal yellowing on younger upper leaves may point to micronutrient availability constraints in high-pH soils, such as iron or zinc limitations.\n- **[DOC-WHEAT-01#sec-3] Section 3: Scouting for Wheat Rust and Foliar Diseases:** Wheat rusts\u2014including yellow (stripe) rust, brown (leaf) rust, and black (stem) rust\u2014are fungal diseases monitored through routine field scouting. Stripe rust typically appears as linear rows of yellow-orange pustules along leaf veins during cool, humid weather, whereas leaf rust forms scattered orange-brown pustules.\n\n*Note:* Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "educational_disclaimer": "Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "citations": [
+                {
+                  "source_id": "DOC-WHEAT-01#sec-2",
+                  "doc_id": "DOC-WHEAT-01",
+                  "title": "Wheat Crop-Care Educational Guide",
+                  "crop_type": "wheat",
+                  "section": "Section 2: Recognizing Leaf Yellowing and Nutrient Indicators",
+                  "similarity_score": 0.6968,
+                  "excerpt": "Lower-leaf yellowing (chlorosis) starting from leaf tips on older wheat foliage is commonly associated in extension literature with nitrogen limitation or temporary waterlogging stress. In contrast, interveinal yellowing..."
+                },
+                {
+                  "source_id": "DOC-WHEAT-01#sec-3",
+                  "doc_id": "DOC-WHEAT-01",
+                  "title": "Wheat Crop-Care Educational Guide",
+                  "crop_type": "wheat",
+                  "section": "Section 3: Scouting for Wheat Rust and Foliar Diseases",
+                  "similarity_score": 0.5067,
+                  "excerpt": "Wheat rusts\u2014including yellow (stripe) rust, brown (leaf) rust, and black (stem) rust\u2014are fungal diseases monitored through routine field scouting. Stripe rust typically appears as linear rows of yellow-orange pustules al..."
+                },
+                {
+                  "source_id": "DOC-WHEAT-01#sec-1",
+                  "doc_id": "DOC-WHEAT-01",
+                  "title": "Wheat Crop-Care Educational Guide",
+                  "crop_type": "wheat",
+                  "section": "Section 1: Critical Irrigation Stages in Wheat",
+                  "similarity_score": 0.4138,
+                  "excerpt": "Wheat requires balanced soil moisture rather than continuous standing water. In educational agronomy references, crown root initiation (around 20 to 25 days after sowing) is considered the most moisture-sensitive stage b..."
+                }
+              ],
+              "confidence": 0.6968,
+              "refused": false,
+              "refusal_reason": null,
+              "warnings": [],
+              "trace": {
+                "trace_id": "tr-a352c5667b9a",
+                "session_id": "sess-b2edd0a665ce",
+                "turn_number": 2,
+                "normalized_input": "wheat",
+                "intent": "crop_clarification_reply",
+                "selected_action": "RETRIEVE_AND_ANSWER",
+                "active_crop_before": null,
+                "active_crop_after": "wheat",
+                "clarification_pending_before": true,
+                "clarification_pending_after": false,
+                "memory_reads": {
+                  "active_crop_type": null,
+                  "pending_clarification": true,
+                  "pending_query": "Why are lower leaves turning yellow?",
+                  "history_messages_loaded": 2
+                },
+                "memory_writes": {
+                  "active_crop_type": "wheat",
+                  "pending_clarification": false,
+                  "pending_query": null
+                },
+                "retrieval_query": "wheat: Why are lower leaves turning yellow?",
+                "retrieval_crop_filter": "wheat",
+                "retrieval_candidates": [
+                  {
+                    "source_id": "DOC-WHEAT-01#sec-2",
+                    "doc_id": "DOC-WHEAT-01",
+                    "crop_type": "wheat",
+                    "section": "Section 2: Recognizing Leaf Yellowing and Nutrient Indicators",
+                    "score": 0.6968,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-WHEAT-01#sec-3",
+                    "doc_id": "DOC-WHEAT-01",
+                    "crop_type": "wheat",
+                    "section": "Section 3: Scouting for Wheat Rust and Foliar Diseases",
+                    "score": 0.5067,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-WHEAT-01#sec-1",
+                    "doc_id": "DOC-WHEAT-01",
+                    "crop_type": "wheat",
+                    "section": "Section 1: Critical Irrigation Stages in Wheat",
+                    "score": 0.4138,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-WHEAT-01#sec-4",
+                    "doc_id": "DOC-WHEAT-01",
+                    "crop_type": "wheat",
+                    "section": "Section 4: Post-Harvest Moisture and Grain Storage Hygiene",
+                    "score": 0.3542,
+                    "accepted": true
+                  }
+                ],
+                "chosen_sources": [
+                  "DOC-WHEAT-01#sec-2",
+                  "DOC-WHEAT-01#sec-3",
+                  "DOC-WHEAT-01#sec-1"
+                ],
+                "citation_validation_passed": true,
+                "validation_result": "passed",
+                "llm_mode_requested": "local-only",
+                "llm_mode_used": "local-only",
+                "latency_ms": 80.94,
+                "error_class": null,
+                "timestamp": "2026-11-27T08:02:47.239596+00:00"
+              }
+            }
+          }
+        },
+        {
+          "user": "What are the critical irrigation stages for it?",
+          "response": {
+            "status_code": 200,
+            "body": {
+              "session_id": "sess-b2edd0a665ce",
+              "turn_number": 3,
+              "intent": "crop_care_query",
+              "action": "RETRIEVE_AND_ANSWER",
+              "active_crop_type": "wheat",
+              "clarification_needed": false,
+              "answer": "Based on the permitted educational documents for **wheat**:\n\n- **[DOC-WHEAT-01#sec-1] Section 1: Critical Irrigation Stages in Wheat:** Wheat requires balanced soil moisture rather than continuous standing water. Secondary critical windows include late tillering, booting, flowering (anthesis), and the milk-to-dough grain-filling stages.\n- **[DOC-WHEAT-01#sec-2] Section 2: Recognizing Leaf Yellowing and Nutrient Indicators:** Lower-leaf yellowing (chlorosis) starting from leaf tips on older wheat foliage is commonly associated in extension literature with nitrogen limitation or temporary waterlogging stress. In contrast, interveinal yellowing on younger upper leaves may point to micronutrient availability constraints in high-pH soils, such as iron or zinc limitations.\n\n*Note:* Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "educational_disclaimer": "Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "citations": [
+                {
+                  "source_id": "DOC-WHEAT-01#sec-1",
+                  "doc_id": "DOC-WHEAT-01",
+                  "title": "Wheat Crop-Care Educational Guide",
+                  "crop_type": "wheat",
+                  "section": "Section 1: Critical Irrigation Stages in Wheat",
+                  "similarity_score": 0.801,
+                  "excerpt": "Wheat requires balanced soil moisture rather than continuous standing water. In educational agronomy references, crown root initiation (around 20 to 25 days after sowing) is considered the most moisture-sensitive stage b..."
+                },
+                {
+                  "source_id": "DOC-WHEAT-01#sec-2",
+                  "doc_id": "DOC-WHEAT-01",
+                  "title": "Wheat Crop-Care Educational Guide",
+                  "crop_type": "wheat",
+                  "section": "Section 2: Recognizing Leaf Yellowing and Nutrient Indicators",
+                  "similarity_score": 0.5054,
+                  "excerpt": "Lower-leaf yellowing (chlorosis) starting from leaf tips on older wheat foliage is commonly associated in extension literature with nitrogen limitation or temporary waterlogging stress. In contrast, interveinal yellowing..."
+                },
+                {
+                  "source_id": "DOC-WHEAT-01#sec-4",
+                  "doc_id": "DOC-WHEAT-01",
+                  "title": "Wheat Crop-Care Educational Guide",
+                  "crop_type": "wheat",
+                  "section": "Section 4: Post-Harvest Moisture and Grain Storage Hygiene",
+                  "similarity_score": 0.5026,
+                  "excerpt": "Clean, dry storage protects harvested wheat from storage molds and grain weevils. Educational post-harvest guidelines highlight drying grain to safe storage moisture levels (typically around 12 percent or below for mediu..."
+                }
+              ],
+              "confidence": 0.801,
+              "refused": false,
+              "refusal_reason": null,
+              "warnings": [],
+              "trace": {
+                "trace_id": "tr-bb68dd275937",
+                "session_id": "sess-b2edd0a665ce",
+                "turn_number": 3,
+                "normalized_input": "What are the critical irrigation stages for it?",
+                "intent": "crop_care_query",
+                "selected_action": "RETRIEVE_AND_ANSWER",
+                "active_crop_before": "wheat",
+                "active_crop_after": "wheat",
+                "clarification_pending_before": false,
+                "clarification_pending_after": false,
+                "memory_reads": {
+                  "active_crop_type": "wheat",
+                  "pending_clarification": false,
+                  "pending_query": null,
+                  "history_messages_loaded": 4
+                },
+                "memory_writes": {
+                  "active_crop_type": "wheat",
+                  "pending_clarification": false,
+                  "pending_query": null
+                },
+                "retrieval_query": "wheat: What are the critical irrigation stages for it?",
+                "retrieval_crop_filter": "wheat",
+                "retrieval_candidates": [
+                  {
+                    "source_id": "DOC-WHEAT-01#sec-1",
+                    "doc_id": "DOC-WHEAT-01",
+                    "crop_type": "wheat",
+                    "section": "Section 1: Critical Irrigation Stages in Wheat",
+                    "score": 0.801,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-SOIL-01#sec-3",
+                    "doc_id": "DOC-SOIL-01",
+                    "crop_type": "general",
+                    "section": "Section 3: Drip vs. Furrow Irrigation Efficiency Principles",
+                    "score": 0.5182,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-WHEAT-01#sec-2",
+                    "doc_id": "DOC-WHEAT-01",
+                    "crop_type": "wheat",
+                    "section": "Section 2: Recognizing Leaf Yellowing and Nutrient Indicators",
+                    "score": 0.5054,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-WHEAT-01#sec-4",
+                    "doc_id": "DOC-WHEAT-01",
+                    "crop_type": "wheat",
+                    "section": "Section 4: Post-Harvest Moisture and Grain Storage Hygiene",
+                    "score": 0.5026,
+                    "accepted": true
+                  }
+                ],
+                "chosen_sources": [
+                  "DOC-WHEAT-01#sec-1",
+                  "DOC-WHEAT-01#sec-2",
+                  "DOC-WHEAT-01#sec-4"
+                ],
+                "citation_validation_passed": true,
+                "validation_result": "passed",
+                "llm_mode_requested": "local-only",
+                "llm_mode_used": "local-only",
+                "latency_ms": 12.46,
+                "error_class": null,
+                "timestamp": "2026-11-27T08:02:47.254730+00:00"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SC-02",
+      "title": "Direct crop-specific L6 semantic retrieval and L7-L8 cited response",
+      "session_id": "sess-d2869d53c7e0",
+      "turns": [
+        {
+          "user": "How can I distinguish early blight from late blight on tomato leaves?",
+          "response": {
+            "status_code": 200,
+            "body": {
+              "session_id": "sess-d2869d53c7e0",
+              "turn_number": 1,
+              "intent": "crop_care_query",
+              "action": "RETRIEVE_AND_ANSWER",
+              "active_crop_type": "tomato",
+              "clarification_needed": false,
+              "answer": "Based on the permitted educational documents for **tomato**:\n\n- **[DOC-TOMATO-01#sec-1] Section 1: Early Blight vs. Late Blight Visual Indicators:** Early blight typically begins on older lower leaves as dark brown spots with concentric rings (\"target-board\" pattern) surrounded by a yellow halo. Late blight progresses rapidly under cool, wet conditions as water-soaked, pale green to dark grayish-brown blotches on leaves and stems, sometimes showing white fungal-like growth on leaf undersides in high humidity.\n- **[DOC-TOMATO-01#sec-3] Section 3: Leaf Yellowing, Root Stress, and Pruning Hygiene:** Yellowing of lower tomato leaves can stem from natural senescence, shading in dense canopies, overwatering/poor drainage, or vascular wilt conditions. Pruning lower suckers and sanitizing pruning tools between rows reduces mechanical spread of pathogens.\n\n*Note:* Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "educational_disclaimer": "Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "citations": [
+                {
+                  "source_id": "DOC-TOMATO-01#sec-1",
+                  "doc_id": "DOC-TOMATO-01",
+                  "title": "Tomato Crop-Care Educational Reference",
+                  "crop_type": "tomato",
+                  "section": "Section 1: Early Blight vs. Late Blight Visual Indicators",
+                  "similarity_score": 0.7681,
+                  "excerpt": "Tomato foliage diseases are commonly distinguished during scouting by lesion pattern and progression. Early blight typically begins on older lower leaves as dark brown spots with concentric rings (\"target-board\" pattern)..."
+                },
+                {
+                  "source_id": "DOC-TOMATO-01#sec-3",
+                  "doc_id": "DOC-TOMATO-01",
+                  "title": "Tomato Crop-Care Educational Reference",
+                  "crop_type": "tomato",
+                  "section": "Section 3: Leaf Yellowing, Root Stress, and Pruning Hygiene",
+                  "similarity_score": 0.4454,
+                  "excerpt": "Yellowing of lower tomato leaves can stem from natural senescence, shading in dense canopies, overwatering/poor drainage, or vascular wilt conditions. Pruning lower suckers and sanitizing pruning tools between rows reduc..."
+                },
+                {
+                  "source_id": "DOC-TOMATO-01#sec-4",
+                  "doc_id": "DOC-TOMATO-01",
+                  "title": "Tomato Crop-Care Educational Reference",
+                  "crop_type": "tomato",
+                  "section": "Section 4: Flowering Temperature Sensitivity and Pollination",
+                  "similarity_score": 0.422,
+                  "excerpt": "Tomato flowers are sensitive to extreme heat or cold nights; sustained daytime temperatures above roughly 35 degrees Celsius or cool nights below 13 degrees Celsius can reduce pollen viability and cause blossom drop. Edu..."
+                }
+              ],
+              "confidence": 0.7681,
+              "refused": false,
+              "refusal_reason": null,
+              "warnings": [],
+              "trace": {
+                "trace_id": "tr-55740d62f6cd",
+                "session_id": "sess-d2869d53c7e0",
+                "turn_number": 1,
+                "normalized_input": "How can I distinguish early blight from late blight on tomato leaves?",
+                "intent": "crop_care_query",
+                "selected_action": "RETRIEVE_AND_ANSWER",
+                "active_crop_before": null,
+                "active_crop_after": "tomato",
+                "clarification_pending_before": false,
+                "clarification_pending_after": false,
+                "memory_reads": {
+                  "active_crop_type": null,
+                  "pending_clarification": false,
+                  "pending_query": null,
+                  "history_messages_loaded": 0
+                },
+                "memory_writes": {
+                  "active_crop_type": "tomato",
+                  "pending_clarification": false,
+                  "pending_query": null
+                },
+                "retrieval_query": "How can I distinguish early blight from late blight on tomato leaves?",
+                "retrieval_crop_filter": "tomato",
+                "retrieval_candidates": [
+                  {
+                    "source_id": "DOC-TOMATO-01#sec-1",
+                    "doc_id": "DOC-TOMATO-01",
+                    "crop_type": "tomato",
+                    "section": "Section 1: Early Blight vs. Late Blight Visual Indicators",
+                    "score": 0.7681,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-TOMATO-01#sec-3",
+                    "doc_id": "DOC-TOMATO-01",
+                    "crop_type": "tomato",
+                    "section": "Section 3: Leaf Yellowing, Root Stress, and Pruning Hygiene",
+                    "score": 0.4454,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-TOMATO-01#sec-4",
+                    "doc_id": "DOC-TOMATO-01",
+                    "crop_type": "tomato",
+                    "section": "Section 4: Flowering Temperature Sensitivity and Pollination",
+                    "score": 0.422,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-TOMATO-01#sec-2",
+                    "doc_id": "DOC-TOMATO-01",
+                    "crop_type": "tomato",
+                    "section": "Section 2: Blossom-End Rot and Calcium-Moisture Balance",
+                    "score": 0.4048,
+                    "accepted": true
+                  }
+                ],
+                "chosen_sources": [
+                  "DOC-TOMATO-01#sec-1",
+                  "DOC-TOMATO-01#sec-3",
+                  "DOC-TOMATO-01#sec-4"
+                ],
+                "citation_validation_passed": true,
+                "validation_result": "passed",
+                "llm_mode_requested": "local-only",
+                "llm_mode_used": "local-only",
+                "latency_ms": 10.15,
+                "error_class": null,
+                "timestamp": "2026-11-27T08:02:47.269042+00:00"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SC-03",
+      "title": "General soil health and irrigation guidance with citations",
+      "session_id": "sess-c26e1cb949ac",
+      "turns": [
+        {
+          "user": "What is the ideal soil pH range for nutrient absorption and why use drip irrigation?",
+          "response": {
+            "status_code": 200,
+            "body": {
+              "session_id": "sess-c26e1cb949ac",
+              "turn_number": 1,
+              "intent": "general_soil_ipm_query",
+              "action": "RETRIEVE_AND_ANSWER",
+              "active_crop_type": null,
+              "clarification_needed": false,
+              "answer": "Based on the permitted educational documents on general crop care:\n\n- **[DOC-SOIL-01#sec-2] Section 2: Soil pH and Nutrient Availability Overview:** Soil pH governs how readily plant roots can absorb dissolved mineral nutrients. Most annual field and vegetable crops absorb major nutrients efficiently in a slightly acidic to neutral pH range (roughly pH 6.0 to 7.0).\n- **[DOC-SOIL-01#sec-3] Section 3: Drip vs. Furrow Irrigation Efficiency Principles:** Drip (trickle) irrigation delivers water slowly near the root zone, minimizing evaporation loss and keeping foliage dry\u2014an advantage for reducing foliar fungal spread. Furrow irrigation channels water along ridges between plant rows and requires careful land leveling to avoid uneven percolation or tailwater runoff.\n\n*Note:* Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "educational_disclaimer": "Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "citations": [
+                {
+                  "source_id": "DOC-SOIL-01#sec-2",
+                  "doc_id": "DOC-SOIL-01",
+                  "title": "Soil Health and Irrigation Fundamentals",
+                  "crop_type": "general",
+                  "section": "Section 2: Soil pH and Nutrient Availability Overview",
+                  "similarity_score": 0.729,
+                  "excerpt": "Soil pH governs how readily plant roots can absorb dissolved mineral nutrients. Most annual field and vegetable crops absorb major nutrients efficiently in a slightly acidic to neutral pH range (roughly pH 6.0 to 7.0). S..."
+                },
+                {
+                  "source_id": "DOC-SOIL-01#sec-3",
+                  "doc_id": "DOC-SOIL-01",
+                  "title": "Soil Health and Irrigation Fundamentals",
+                  "crop_type": "general",
+                  "section": "Section 3: Drip vs. Furrow Irrigation Efficiency Principles",
+                  "similarity_score": 0.5312,
+                  "excerpt": "Drip (trickle) irrigation delivers water slowly near the root zone, minimizing evaporation loss and keeping foliage dry\u2014an advantage for reducing foliar fungal spread. Furrow irrigation channels water along ridges betwee..."
+                },
+                {
+                  "source_id": "DOC-SOIL-01#sec-1",
+                  "doc_id": "DOC-SOIL-01",
+                  "title": "Soil Health and Irrigation Fundamentals",
+                  "crop_type": "general",
+                  "section": "Section 1: Mulching and Soil Moisture Conservation",
+                  "similarity_score": 0.4327,
+                  "excerpt": "Organic mulches\u2014such as clean straw, dried leaves, or composted plant residue\u2014reduce surface evaporation, moderate soil temperature extremes, and cushion soil aggregates against heavy raindrop impact. Keeping a thin mulc..."
+                }
+              ],
+              "confidence": 0.729,
+              "refused": false,
+              "refusal_reason": null,
+              "warnings": [],
+              "trace": {
+                "trace_id": "tr-01f3bc8fd52e",
+                "session_id": "sess-c26e1cb949ac",
+                "turn_number": 1,
+                "normalized_input": "What is the ideal soil pH range for nutrient absorption and why use drip irrigation?",
+                "intent": "general_soil_ipm_query",
+                "selected_action": "RETRIEVE_AND_ANSWER",
+                "active_crop_before": null,
+                "active_crop_after": null,
+                "clarification_pending_before": false,
+                "clarification_pending_after": false,
+                "memory_reads": {
+                  "active_crop_type": null,
+                  "pending_clarification": false,
+                  "pending_query": null,
+                  "history_messages_loaded": 0
+                },
+                "memory_writes": {
+                  "active_crop_type": null,
+                  "pending_clarification": false,
+                  "pending_query": null
+                },
+                "retrieval_query": "What is the ideal soil pH range for nutrient absorption and why use drip irrigation?",
+                "retrieval_crop_filter": "general",
+                "retrieval_candidates": [
+                  {
+                    "source_id": "DOC-SOIL-01#sec-2",
+                    "doc_id": "DOC-SOIL-01",
+                    "crop_type": "general",
+                    "section": "Section 2: Soil pH and Nutrient Availability Overview",
+                    "score": 0.729,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-SOIL-01#sec-3",
+                    "doc_id": "DOC-SOIL-01",
+                    "crop_type": "general",
+                    "section": "Section 3: Drip vs. Furrow Irrigation Efficiency Principles",
+                    "score": 0.5312,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-SOIL-01#sec-1",
+                    "doc_id": "DOC-SOIL-01",
+                    "crop_type": "general",
+                    "section": "Section 1: Mulching and Soil Moisture Conservation",
+                    "score": 0.4327,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-SOIL-01#sec-4",
+                    "doc_id": "DOC-SOIL-01",
+                    "crop_type": "general",
+                    "section": "Section 4: Integrated Pest Management (IPM) Core Principles",
+                    "score": 0.3251,
+                    "accepted": true
+                  }
+                ],
+                "chosen_sources": [
+                  "DOC-SOIL-01#sec-2",
+                  "DOC-SOIL-01#sec-3",
+                  "DOC-SOIL-01#sec-1"
+                ],
+                "citation_validation_passed": true,
+                "validation_result": "passed",
+                "llm_mode_requested": "local-only",
+                "llm_mode_used": "local-only",
+                "latency_ms": 9.25,
+                "error_class": null,
+                "timestamp": "2026-11-27T08:02:47.282263+00:00"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SC-04",
+      "title": "Non-prescriptive boundary enforcement on chemical dosage request",
+      "session_id": "sess-259f3ad5f5fc",
+      "turns": [
+        {
+          "user": "How many ml per litre of fungicide should I spray on potato late blight?",
+          "response": {
+            "status_code": 200,
+            "body": {
+              "session_id": "sess-259f3ad5f5fc",
+              "turn_number": 1,
+              "intent": "prescriptive_request",
+              "action": "REFUSE_PRESCRIPTIVE_REQUEST",
+              "active_crop_type": null,
+              "clarification_needed": false,
+              "answer": "I cannot prescribe chemical dosages, mixing ratios, spray schedules, or specific pesticide/fungicide products. This assistant provides educational crop-care information only.\n\nFor safe, localized treatment recommendations, please consult a certified agricultural extension officer or plant health clinic.",
+              "educational_disclaimer": "Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "citations": [],
+              "confidence": 1.0,
+              "refused": true,
+              "refusal_reason": "prescriptive_chemical_dosage_prohibited",
+              "warnings": [],
+              "trace": {
+                "trace_id": "tr-0b87c718ec22",
+                "session_id": "sess-259f3ad5f5fc",
+                "turn_number": 1,
+                "normalized_input": "How many ml per litre of fungicide should I spray on potato late blight?",
+                "intent": "prescriptive_request",
+                "selected_action": "REFUSE_PRESCRIPTIVE_REQUEST",
+                "active_crop_before": null,
+                "active_crop_after": null,
+                "clarification_pending_before": false,
+                "clarification_pending_after": false,
+                "memory_reads": {
+                  "active_crop_type": null,
+                  "pending_clarification": false,
+                  "pending_query": null,
+                  "history_messages_loaded": 0
+                },
+                "memory_writes": {
+                  "active_crop_type": null,
+                  "pending_clarification": false,
+                  "pending_query": null
+                },
+                "retrieval_query": null,
+                "retrieval_crop_filter": null,
+                "retrieval_candidates": [],
+                "chosen_sources": [],
+                "citation_validation_passed": true,
+                "validation_result": "refused",
+                "llm_mode_requested": "local-only",
+                "llm_mode_used": "local-only",
+                "latency_ms": 0.29,
+                "error_class": null,
+                "timestamp": "2026-11-27T08:02:47.286409+00:00"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SC-05",
+      "title": "Insufficient-evidence refusal for unindexed crop",
+      "session_id": "sess-862ed6547ccd",
+      "turns": [
+        {
+          "user": "How should I prune dragon fruit stems in arid climates?",
+          "response": {
+            "status_code": 200,
+            "body": {
+              "session_id": "sess-862ed6547ccd",
+              "turn_number": 1,
+              "intent": "out_of_scope",
+              "action": "REFUSE_INSUFFICIENT_EVIDENCE",
+              "active_crop_type": null,
+              "clarification_needed": false,
+              "answer": "I do not have permitted crop-care educational documents indexed for **dragon fruit**.\n\nCurrently supported crops are **wheat, rice, tomato, maize, potato**, along with general soil health, irrigation, and IPM fundamentals.",
+              "educational_disclaimer": "Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "citations": [],
+              "confidence": 0.0,
+              "refused": true,
+              "refusal_reason": "unsupported_crop:dragon fruit",
+              "warnings": [],
+              "trace": {
+                "trace_id": "tr-277a928234de",
+                "session_id": "sess-862ed6547ccd",
+                "turn_number": 1,
+                "normalized_input": "How should I prune dragon fruit stems in arid climates?",
+                "intent": "out_of_scope",
+                "selected_action": "REFUSE_INSUFFICIENT_EVIDENCE",
+                "active_crop_before": null,
+                "active_crop_after": null,
+                "clarification_pending_before": false,
+                "clarification_pending_after": false,
+                "memory_reads": {
+                  "active_crop_type": null,
+                  "pending_clarification": false,
+                  "pending_query": null,
+                  "history_messages_loaded": 0
+                },
+                "memory_writes": {
+                  "active_crop_type": null,
+                  "pending_clarification": false,
+                  "pending_query": null
+                },
+                "retrieval_query": null,
+                "retrieval_crop_filter": null,
+                "retrieval_candidates": [],
+                "chosen_sources": [],
+                "citation_validation_passed": true,
+                "validation_result": "refused",
+                "llm_mode_requested": "local-only",
+                "llm_mode_used": "local-only",
+                "latency_ms": 0.23,
+                "error_class": "OutOfScopeOrUnsupportedTopic",
+                "timestamp": "2026-11-27T08:02:47.289946+00:00"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "NEG-01",
+      "title": "Input validation rejection and unknown session error handling",
+      "session_id": "sess-862ed6547ccd",
+      "turns": [
+        {
+          "user": "   !!!   ",
+          "response": {
+            "status_code": 400,
+            "body": {
+              "detail": "Input message must contain non-empty alphanumeric text after normalization."
+            }
+          }
+        },
+        {
+          "user": "What about wheat rust? (unknown session_id)",
+          "response": {
+            "status_code": 404,
+            "body": {
+              "detail": "Unknown session_id: sess-doesnotexist"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "NEG-02",
+      "title": "Unavailable optional LLM fallback and off-topic retrieval refusal",
+      "session_id": "sess-9f43e38446ee",
+      "turns": [
+        {
+          "user": "What causes hollow heart in potato tubers? (llm_mode_override=openai)",
+          "response": {
+            "status_code": 200,
+            "body": {
+              "session_id": "sess-9f43e38446ee",
+              "turn_number": 1,
+              "intent": "crop_care_query",
+              "action": "RETRIEVE_AND_ANSWER",
+              "active_crop_type": "potato",
+              "clarification_needed": false,
+              "answer": "Based on the permitted educational documents for **potato**:\n\n- **[DOC-POTATO-01#sec-4] Section 4: Irrigation Consistency During Tuber Bulking:** Irregular swings between drought stress and heavy watering during tuber initiation and bulking can cause physiological defects such as hollow heart, growth cracks, or knobby secondary tubers. Educational irrigation notes emphasize steady moderate moisture and stopping irrigation ahead of harvest so tuber skins mature (\"skin set\") and resist bruising.\n- **[DOC-POTATO-01#sec-2] Section 2: Earthing Up (Hilling) and Tuber Protection:** As potato stems elongate, soil is mounded around the base of plants\u2014a practice called earthing up or hilling. Adequate soil cover protects developing tubers from sunlight exposure (which turns tubers green and produces bitter glycoalkaloids), improves drainage around the stolon zone, and creates a physical barrier against potato tuber moth egg-laying.\n\n*Note:* Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "educational_disclaimer": "Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "citations": [
+                {
+                  "source_id": "DOC-POTATO-01#sec-4",
+                  "doc_id": "DOC-POTATO-01",
+                  "title": "Potato Cultivation & Care Educational Notes",
+                  "crop_type": "potato",
+                  "section": "Section 4: Irrigation Consistency During Tuber Bulking",
+                  "similarity_score": 0.5564,
+                  "excerpt": "Irregular swings between drought stress and heavy watering during tuber initiation and bulking can cause physiological defects such as hollow heart, growth cracks, or knobby secondary tubers. Educational irrigation notes..."
+                },
+                {
+                  "source_id": "DOC-POTATO-01#sec-2",
+                  "doc_id": "DOC-POTATO-01",
+                  "title": "Potato Cultivation & Care Educational Notes",
+                  "crop_type": "potato",
+                  "section": "Section 2: Earthing Up (Hilling) and Tuber Protection",
+                  "similarity_score": 0.4378,
+                  "excerpt": "As potato stems elongate, soil is mounded around the base of plants\u2014a practice called earthing up or hilling. Adequate soil cover protects developing tubers from sunlight exposure (which turns tubers green and produces b..."
+                },
+                {
+                  "source_id": "DOC-POTATO-01#sec-1",
+                  "doc_id": "DOC-POTATO-01",
+                  "title": "Potato Cultivation & Care Educational Notes",
+                  "crop_type": "potato",
+                  "section": "Section 1: Seed Tuber Selection and Sprout Preparation",
+                  "similarity_score": 0.407,
+                  "excerpt": "Using certified disease-free seed tubers is a foundational preventive practice in potato cultivation because viruses and bacterial wilt can carry over across generations. Pre-sprouting (chitting) seed tubers in cool, dif..."
+                }
+              ],
+              "confidence": 0.5564,
+              "refused": false,
+              "refusal_reason": null,
+              "warnings": [
+                "Optional openai provider unavailable (OpenAI mode requested, but OPENAI_API_KEY is missing.); safely fell back to local-only grounded composition."
+              ],
+              "trace": {
+                "trace_id": "tr-02230cb2077e",
+                "session_id": "sess-9f43e38446ee",
+                "turn_number": 1,
+                "normalized_input": "What causes hollow heart in potato tubers?",
+                "intent": "crop_care_query",
+                "selected_action": "RETRIEVE_AND_ANSWER",
+                "active_crop_before": null,
+                "active_crop_after": "potato",
+                "clarification_pending_before": false,
+                "clarification_pending_after": false,
+                "memory_reads": {
+                  "active_crop_type": null,
+                  "pending_clarification": false,
+                  "pending_query": null,
+                  "history_messages_loaded": 0
+                },
+                "memory_writes": {
+                  "active_crop_type": "potato",
+                  "pending_clarification": false,
+                  "pending_query": null
+                },
+                "retrieval_query": "What causes hollow heart in potato tubers?",
+                "retrieval_crop_filter": "potato",
+                "retrieval_candidates": [
+                  {
+                    "source_id": "DOC-POTATO-01#sec-4",
+                    "doc_id": "DOC-POTATO-01",
+                    "crop_type": "potato",
+                    "section": "Section 4: Irrigation Consistency During Tuber Bulking",
+                    "score": 0.5564,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-POTATO-01#sec-2",
+                    "doc_id": "DOC-POTATO-01",
+                    "crop_type": "potato",
+                    "section": "Section 2: Earthing Up (Hilling) and Tuber Protection",
+                    "score": 0.4378,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-POTATO-01#sec-1",
+                    "doc_id": "DOC-POTATO-01",
+                    "crop_type": "potato",
+                    "section": "Section 1: Seed Tuber Selection and Sprout Preparation",
+                    "score": 0.407,
+                    "accepted": true
+                  },
+                  {
+                    "source_id": "DOC-POTATO-01#sec-3",
+                    "doc_id": "DOC-POTATO-01",
+                    "crop_type": "potato",
+                    "section": "Section 3: Late Blight Vigilance and Foliage Monitoring",
+                    "score": 0.3389,
+                    "accepted": true
+                  }
+                ],
+                "chosen_sources": [
+                  "DOC-POTATO-01#sec-4",
+                  "DOC-POTATO-01#sec-2",
+                  "DOC-POTATO-01#sec-1"
+                ],
+                "citation_validation_passed": true,
+                "validation_result": "passed",
+                "llm_mode_requested": "openai",
+                "llm_mode_used": "local-only",
+                "latency_ms": 10.58,
+                "error_class": "ProviderUnavailableError",
+                "timestamp": "2026-11-27T08:02:47.306599+00:00"
+              }
+            }
+          }
+        },
+        {
+          "user": "Explain how to balance a corporate quarterly ledger.",
+          "response": {
+            "status_code": 200,
+            "body": {
+              "session_id": "sess-9f43e38446ee",
+              "turn_number": 2,
+              "intent": "out_of_scope",
+              "action": "REFUSE_INSUFFICIENT_EVIDENCE",
+              "active_crop_type": "potato",
+              "clarification_needed": false,
+              "answer": "Your request falls outside the permitted crop-care educational documents. I can answer non-prescriptive questions about **wheat, rice, tomato, maize, potato** crop care or general soil, irrigation, and IPM concepts.",
+              "educational_disclaimer": "Educational information only: this guidance summarizes permitted crop-care reference documents and is non-prescriptive. Consult a local agricultural extension officer or accredited soil/plant laboratory before applying chemicals or site-specific treatments.",
+              "citations": [],
+              "confidence": 0.0,
+              "refused": true,
+              "refusal_reason": "out_of_scope_or_unindexed_topic",
+              "warnings": [],
+              "trace": {
+                "trace_id": "tr-065332edbe8e",
+                "session_id": "sess-9f43e38446ee",
+                "turn_number": 2,
+                "normalized_input": "Explain how to balance a corporate quarterly ledger.",
+                "intent": "out_of_scope",
+                "selected_action": "REFUSE_INSUFFICIENT_EVIDENCE",
+                "active_crop_before": "potato",
+                "active_crop_after": "potato",
+                "clarification_pending_before": false,
+                "clarification_pending_after": false,
+                "memory_reads": {
+                  "active_crop_type": "potato",
+                  "pending_clarification": false,
+                  "pending_query": null,
+                  "history_messages_loaded": 2
+                },
+                "memory_writes": {
+                  "active_crop_type": "potato",
+                  "pending_clarification": false,
+                  "pending_query": null
+                },
+                "retrieval_query": null,
+                "retrieval_crop_filter": null,
+                "retrieval_candidates": [],
+                "chosen_sources": [],
+                "citation_validation_passed": true,
+                "validation_result": "refused",
+                "llm_mode_requested": "local-only",
+                "llm_mode_used": "local-only",
+                "latency_ms": 0.72,
+                "error_class": "OutOfScopeOrUnsupportedTopic",
+                "timestamp": "2026-11-27T08:02:47.309480+00:00"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

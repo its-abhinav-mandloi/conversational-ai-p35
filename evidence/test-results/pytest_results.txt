@@ -1,0 +1,31 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.14, pytest-9.2.0, pluggy-1.7.0 -- /Users/abhinavmandloi/Documents/Sem3Projects/Conversational AI Assingment 1/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/abhinavmandloi/Documents/Sem3Projects/Conversational AI Assingment 1
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.16.0
+collecting ... collected 20 items
+
+tests/test_api.py::test_health_and_docs_endpoints PASSED                 [  5%]
+tests/test_api.py::test_session_lifecycle_chat_and_traces PASSED         [ 10%]
+tests/test_negative_cases.py::test_api_rejects_empty_input_and_unknown_session PASSED [ 15%]
+tests/test_negative_cases.py::test_insufficient_retrieval_evidence_triggers_refusal PASSED [ 20%]
+tests/test_negative_cases.py::test_unavailable_optional_llm_falls_back_safely PASSED [ 25%]
+tests/test_negative_cases.py::test_out_of_scope_and_unsupported_crop_refusals PASSED [ 30%]
+tests/test_orchestrator.py::test_normalize_user_input_collapses_whitespace_and_control_chars PASSED [ 35%]
+tests/test_orchestrator.py::test_normalize_user_input_rejects_empty_or_punctuation_only[] PASSED [ 40%]
+tests/test_orchestrator.py::test_normalize_user_input_rejects_empty_or_punctuation_only[   ] PASSED [ 45%]
+tests/test_orchestrator.py::test_normalize_user_input_rejects_empty_or_punctuation_only[\n\t] PASSED [ 50%]
+tests/test_orchestrator.py::test_normalize_user_input_rejects_empty_or_punctuation_only[!!!???] PASSED [ 55%]
+tests/test_orchestrator.py::test_normalize_user_input_rejects_empty_or_punctuation_only[---] PASSED [ 60%]
+tests/test_orchestrator.py::test_orchestrator_greeting_and_direct_crop_query PASSED [ 65%]
+tests/test_orchestrator.py::test_orchestrator_prescriptive_request_is_refused PASSED [ 70%]
+tests/test_retrieval_and_rag.py::test_deterministic_chunking_produces_stable_ids PASSED [ 75%]
+tests/test_retrieval_and_rag.py::test_semantic_retrieval_returns_relevant_section_with_crop_filter PASSED [ 80%]
+tests/test_retrieval_and_rag.py::test_semantic_retrieval_score_threshold_rejects_unrelated_query PASSED [ 85%]
+tests/test_retrieval_and_rag.py::test_citation_validator_rejects_missing_or_hallucinated_citations PASSED [ 90%]
+tests/test_state_continuity.py::test_clarification_flow_preserves_pending_query_and_resolves_on_crop_reply PASSED [ 95%]
+tests/test_state_continuity.py::test_bounded_message_history_and_trace_persistence PASSED [100%]
+
+============================== 20 passed in 1.18s ==============================
